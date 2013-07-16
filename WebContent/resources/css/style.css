@@ -1,0 +1,154 @@
+@CHARSET "UTF-8";
+
+.error{
+	color:red;	
+}
+
+.info{
+	color:green;	
+}
+
+body{
+	background-color:rgb(237,237,237);
+	
+}
+
+.company{
+	font-family: 'Joti One', cursive;
+}
+
+.grey {
+	/* Anciens navigateurs */
+	background: #282A31 url("gradient-bg.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	color:white;
+	/* Internet Explorer */
+	*background: #282A31;
+	background: #282A31\0/;
+	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr=#FF444649, endColorstr=#FF282A31);
+	}
+	@media all and (min-width: 0px) {
+		.gradient {
+			/* Opera */
+			background: #282A31 url("gradient-bg.svg");
+			/* Navigateurs récents */
+			background-image: -webkit-gradient(
+				linear,
+				left top, left bottom,
+				from(#444649),
+				to(#282A31)
+			);
+			background-image: -webkit-linear-gradient(
+				top,
+				#444649,
+				#282A31
+			);
+			background-image: -moz-linear-gradient(
+				top,
+				#444649,
+				#282A31
+			);
+			background-image: -o-linear-gradient(
+				top,
+				#444649,
+				#282A31
+			);
+			background-image: linear-gradient(
+				top,
+				#444649,
+				#282A31
+			);
+		}
+	
+}
+
+.greycl{
+	
+	background-color:rgb(237,237,237);
+	
+}
+
+
+
+#container{
+	position:absolute;
+	top:35px;
+	left:0;
+	right:0;
+	bottom:35px;
+	
+}
+
+#header{
+	padding-left:10px;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	height:35px;
+	line-height:35px;
+}
+
+#presentation{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0px;
+	width:400px;
+
+}
+
+#result{
+	
+	position:absolute;
+	left:440px;
+	right:0;
+	height:60px;
+	bottom:0px;
+	border : 10px solid rgb(237,237,237); 
+	background-color:white;
+	
+}
+
+#editor{
+	position:absolute;
+	top:0;
+	left:400px;
+	right:0;
+	bottom:60px;
+	border : 10px solid rgb(237,237,237); 
+
+}
+
+h1{
+	font-size:12pt;
+	margin:0;
+	padding:0;
+}
+
+#presentation-content{
+	position:absolute;
+	top:5px;
+	left:10px;
+	right:15px;
+	bottom:5px;
+	background-color:white;
+	overflow:auto;
+	padding:10px;
+}
+
+#footer{
+	position:absolute;
+	right:0;
+	left:0;
+	bottom:0px;
+	height:	35px;
+	line-height: 35px;
+	text-align:center;
+	font-size: 10pt;
+	color: #282A31;
+}
