@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/template/admin.xhtml">
+	<ui:define name="content">
+		<h1>Liste des epreuves</h1>
+		
+		<h:form>
+			<h:dataTable value="#{epreuveBean.listEpreuves()}" var="epreuve"
+				id="listTable" styleClass="table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row">
+
+				<h:column>
+
+					<f:facet name="header">Identifiant de l'épreuve</f:facet>
+					<h:outputText id="id" value="#{epreuve.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Date de lancement</f:facet>
+					<h:outputText id="nom" value="#{epreuve.beginDate}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Supprimer</f:facet>
+					<h:commandButton styleClass="btn btn-inverse icon-remove"
+						id="commande" value="Supprimer" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h:form>
+			<h:commandLink action="welcome.xhtml" value="Retour"
+				styleClass="link" />
+			<h:commandLink action="welcome.xhtml" value="Ajouter nouvelle épreuve"
+				styleClass="link" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

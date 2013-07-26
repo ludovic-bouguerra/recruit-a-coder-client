@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/template/admin.xhtml">
+	<ui:define name="content">
+		<h:form styleClass="form-horizontal">
+			<fieldset>
+				<legend>Création d'une nouvelle épreuve</legend>
+				<div class="control-group">
+
+					<h:outputLabel styleClass="control-label" for="title">Titre <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+						<h:inputText id="title" value="#{subjectBean.subject.title}"
+							required="true" size="20" maxlength="60" />
+					</div>
+					<h:message id="titleMessage" for="title" errorClass="erreur" />
+					<br />
+				</div>
+				<div class="control-group">
+					<h:outputLabel styleClass="control-label" for="enonce">Sujet <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+
+						<h:inputTextarea id="enonce" value="#{subjectBean.subject.enonce}"
+							required="true" />
+					</div>
+					<h:message id="enonceMessage" for="enonce" errorClass="erreur" />
+				</div>
+				<br />
+				<div class="control-group">
+					<h:outputLabel styleClass="control-label" for="difficulty">Difficultée (1-5) <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+
+						<h:inputTextarea id="difficulty"
+							value="#{subjectBean.subject.difficulty}" required="true" />
+					</div>
+					<h:message id="difficultyMessage" for="difficulty"
+						errorClass="erreur" />
+				</div>
+				<h:messages globalOnly="true" infoClass="info" />
+
+			</fieldset>
+			
+
+		<h:commandButton value="Enregistrement" action="#{epreuveBean.save()}"
+			styleClass="btn btn-inverse" />				
+		</h:form>
+
+		<h:form>
+			<h:commandLink action="welcome.xhtml" value="Retour"
+				styleClass="link" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

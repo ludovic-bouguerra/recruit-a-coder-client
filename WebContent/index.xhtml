@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="#{request.contextPath}/assets/ace/ace.js"></script>
+	<h:outputStylesheet library="assets/bootstrap/css"
+		name="bootstrap.min.css" />
+	<h:outputStylesheet library="assets/cosmo"
+		name="bootswatch.css" />		
+	<h:outputScript library="assets/bootstrap/js" name="bootstrap.min.js" />
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Joti+One'
+		rel='stylesheet' type='text/css' />
+
+
+	<script language="Javascript" type="text/javascript">
+		$(document).ready(function() {
+			var editor = ace.edit("editor");
+			editor.setTheme("ace/theme/eclipse");
+			editor.getSession().setMode("ace/mode/javascript");
+			var textarea = $('#code_form\\:code').hide();
+			editor.getSession().setValue(textarea.val());
+			editor.getSession().on('change', function() {
+				textarea.val(editor.getSession().getValue());
+			});
+
+		});
+	</script>
+	<title>ECodigo</title>
+</h:head>
+<h:body>
+	<h:form id="code_form">
+		<div id="header" class="grey">
+			<div class="component">
+				<span class="company brand">E-Codigo</span>
+								
+				<h:selectOneMenu
+					value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].language}" styleClass="component" >
+					<f:selectItem itemValue="java" itemLabel="Java" />
+					<f:selectItem itemValue="php" itemLabel="Php" />
+
+				</h:selectOneMenu>
+				
+				<h:commandButton value="Lancer la compilation"
+					action="#{launcherBean.launcherSession.launch()}"
+					styleClass="btn btn-inverse btn-small component"></h:commandButton>
+				<h:commandButton value="Exercice précédent"
+					action="#{launcherBean.launcherSession.previousStep()}"
+					styleClass="btn btn-inverse btn-small component"></h:commandButton>
+				Exercice numéro
+				<h:outputText value="#{launcherBean.launcherSession.page}" />
+				/	
+				<h:outputText value="#{launcherBean.launcherSession.exerciceCount}" />					
+				<h:commandButton value="Exercice suivant"
+					action="#{launcherBean.launcherSession.nextStep()}"
+					styleClass="btn btn-inverse btn-small component"></h:commandButton>
+				<h:commandButton value="Envoyer mon résultat"
+					action="#{launcherBean.launcherSession.nextStep()}"
+					styleClass="btn btn-inverse btn-small component"></h:commandButton>
+				</div>				
+					
+		</div>
+		<div id="container">
+			<div id="presentation" class="greycl">
+				<div id="presentation-content">
+					<h1>
+						<h:outputText
+							value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].subject.title}" />
+					</h1>
+					<h:outputText escape="false"
+						value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].subject.enonce}" />
+
+
+					<h:inputTextarea id="code"
+						value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].code}"></h:inputTextarea>
+				</div>
+			</div>
+			<div id="editor"></div>
+			<div id="testcases">
+				<h1>Cas de tests</h1>
+
+				<ui:repeat var="test" varStatus="status"
+					value="#{launcherBean.launcherSession.checkedTestCases[launcherBeanSession.index]}">
+					<h:outputLabel styleClass="checkbox inline">
+					<h:selectBooleanCheckbox value="#{launcherBean.launcherSession.checkedTestCases[launcherBeanSession.index][status.index].checked}" />
+					#{test.testCase.description}
+					</h:outputLabel>
+						
+				</ui:repeat>
+
+
+			</div>
+			<div id="result">
+				<h1>Sortie console</h1>
+				
+				<c:choose>
+				    <c:when test="#{launcherBean.launcherSession.responses[launcherBeanSession.index].valid}">
+				        <c:set var="pClass" value="info"/>
+				    </c:when>
+				    <c:otherwise>
+				    	<c:set var="pClass" value="error"/>
+				    </c:otherwise>
+				</c:choose>
+				<p class="#{pClass}" >
+					<h:outputText value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].response}" />
+				</p>
+
+			</div>
+		</div>
+		<div id="footer" class="greycl">(c) 2013 Ludovic Bouguerra</div>
+	</h:form>
+
+</h:body>
+</html>
