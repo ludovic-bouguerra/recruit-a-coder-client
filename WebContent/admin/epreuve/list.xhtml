@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/template/admin.xhtml">
-	<ui:define name="content">
+	<ui:define name="admin-content">
 		<h1>Liste des epreuves</h1>
 		
 		<h:form>
@@ -18,11 +18,18 @@
 					<f:facet name="header">Identifiant de l'épreuve</f:facet>
 					<h:outputText id="id" value="#{epreuve.id}" />
 				</h:column>
-
+				<h:column>
+					<f:facet name="header">Titre de l'épreuve</f:facet>
+					<h:outputText id="title" value="#{epreuve.title}" />
+				</h:column>
 				<h:column>
 					<f:facet name="header">Date de lancement</f:facet>
-					<h:outputText id="nom" value="#{epreuve.beginDate}" />
+					<h:outputText id="createdAt" value="#{epreuve.createdAt}" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">Date de lancement</f:facet>
+					<h:outputText id="visible" value="#{epreuve.visible}" />
+				</h:column>				
 				<h:column>
 					<f:facet name="header">Supprimer</f:facet>
 					<h:commandButton styleClass="btn btn-inverse icon-remove"

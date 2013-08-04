@@ -1,47 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-        xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
- 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
 	<display-name>JavaServerFaces</display-name>
- 
+
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
- 
+
+
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/welcome.xhtml</welcome-file>
+		<welcome-file>home.xhtml</welcome-file>
 	</welcome-file-list>
- 
+
 	<!-- JSF mapping -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
- 
+
+	<!-- Pretty face configuration -->
+	<filter>
+		<filter-name>Pretty Filter</filter-name>
+		<filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Pretty Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
 	<!-- Map these files with JSF -->
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>/faces/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.jsf</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.faces</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
- 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/commercial/404.xhtml</location>
+	</error-page>
+	<!-- Security and Authentication -->
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>ecodigo-realm</realm-name>
+		<form-login-config>
+			<form-login-page>/commercial/login.xhtml</form-login-page>
+			<form-error-page>/commercial/login.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
+	<!-- <security-role> <description>administrateur</description> <role-name>administrateur</role-name> 
+		</security-role> <security-constraint> <web-resource-collection> <web-resource-name>Admininistration</web-resource-name> 
+		<url-pattern>/admin/*</url-pattern> <http-method>GET</http-method> <http-method>POST</http-method> 
+		</web-resource-collection> <auth-constraint> <role-name>*</role-name> </auth-constraint> 
+		</security-constraint> -->
 </web-app>

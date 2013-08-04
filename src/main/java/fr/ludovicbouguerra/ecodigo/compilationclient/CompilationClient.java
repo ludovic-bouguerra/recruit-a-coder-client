@@ -7,6 +7,7 @@ import fr.ludovicbouguerra.ecodigo.language.UnexpectedResult;
 import javax.jms.*;
 import javax.naming.TimeLimitExceededException;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -41,7 +42,7 @@ public class CompilationClient implements ICompilationClient{
 
 		@Override
 		public String sendCompilation(String code, String language,
-				String inputData, String expectedResult) throws TimeLimitExceededException, UnexpectedResult {
+				ArrayList<String> inputData, ArrayList<String> expectedResult) throws TimeLimitExceededException, UnexpectedResult {
 	        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
 	        Connection connection;
 	        try {
@@ -67,8 +68,8 @@ public class CompilationClient implements ICompilationClient{
 	            //Now create the actual message you want to send
 	            Message message = session.createMessage();
 	            message.setStringProperty("code", code);
-	            message.setStringProperty("input-data", inputData);
-	            message.setStringProperty("expected-result", "Salut\n");
+	            message.setObjectProperty("input-data", inputData);
+	            message.setObjectProperty("expected-result", expectedResult);
 	            message.setStringProperty("language", language);
 	            
 	 

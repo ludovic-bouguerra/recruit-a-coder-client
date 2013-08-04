@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/template/admin.xhtml">
-	<ui:define name="content">
+	<ui:define name="admin-content">
 		<h1>Liste des sujets</h1>
 		<h:form>
 			<h:dataTable value="#{subjectBean.listSubjects()}" var="subject"

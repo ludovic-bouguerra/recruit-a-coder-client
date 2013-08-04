@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/admin.xhtml">
-	<ui:define name="content">
+	<ui:define name="admin-content">
 		<h:form styleClass="form-horizontal">
 			<fieldset>
 				<legend>Création d'un nouveau sujet</legend>
@@ -15,7 +16,7 @@
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-						<h:inputText id="title" value="#{subjectBean.subject.title}"
+						<h:inputText id="title" value="#{subjectViewBean.subject.title}"
 							required="true" size="20" maxlength="60" />
 					</div>
 					<h:message id="titleMessage" for="title" errorClass="erreur" />
@@ -27,34 +28,64 @@
 					</h:outputLabel>
 					<div class="controls">
 
-						<h:inputTextarea id="enonce" value="#{subjectBean.subject.enonce}"
+						<p:editor id="enonce" value="#{subjectViewBean.subject.enonce}"
 							required="true" />
 					</div>
 					<h:message id="enonceMessage" for="enonce" errorClass="erreur" />
 				</div>
 				<br />
 				<div class="control-group">
-					<h:outputLabel styleClass="control-label" for="difficulty">Sujet <span
+					<h:outputLabel styleClass="control-label" for="difficulty">Difficultée <span
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-
-						<h:inputTextarea id="difficulty"
-							value="#{subjectBean.subject.difficulty}" required="true" />
+						<h:inputHidden id="difficulty"
+							value="#{subjectViewBean.subject.difficulty}" />
+						<p:slider minValue="0" maxValue="5" for="difficulty"
+							required="true" />
 					</div>
 					<h:message id="difficultyMessage" for="difficulty"
 						errorClass="erreur" />
 				</div>
 				<h:messages globalOnly="true" infoClass="info" />
+				<div class="control-group">
+					<h:outputLabel styleClass="control-label" for="difficulty">Durée du sujet <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+						<p:calendar value="#{subjectViewBean.subject.timeLimit}" pattern="HH:mm" id="limit" timeOnly="true" />  
+					</div>
+					<h:message id="limitMessage" for="limit"
+						errorClass="erreur" />
+				</div>
 
 			</fieldset>
-			<ui:repeat value="#{subjectBean.subject.testCases}"
-				varStatus="testCase">
-				<h:inputText
-					value="#{subjectBean.subject.testCases[testCase.index]}" />
-			</ui:repeat>
 			<fieldset>
-				<legend>Cas de tests</legend>
+				<legend>Liste des cas de tests</legend>
+				<table class="table">
+					<thead>
+						<tr>
+							<td>Identifiant</td>
+							<td>Description</td>
+							<td>Actions</td>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat value="#{subjectViewBean.subject.testCases}"
+							varStatus="testCase">
+							<tr>
+								<td><h:outputText
+										value="#{subjectViewBean.subject.testCases[testCase.index].id}" /></td>
+								<td><h:outputText
+										value="#{subjectViewBean.subject.testCases[testCase.index].description}" /></td>
+								<td></td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Nouveau cas de tests</legend>
 				<div class="control-group">
 
 					<h:outputLabel styleClass="control-label" for="title">Titre <span
@@ -62,8 +93,8 @@
 					</h:outputLabel>
 					<div class="controls">
 						<h:inputText id="description"
-							value="#{subjectBean.test.description}" required="true" size="20"
-							maxlength="60" />
+							value="#{subjectViewBean.testCase.description}" required="true"
+							size="20" maxlength="60" />
 					</div>
 					<h:message id="descriptionMessage" for="title" errorClass="erreur" />
 					<br />
@@ -74,8 +105,8 @@
 					</h:outputLabel>
 					<div class="controls">
 
-						<h:inputTextarea id="input" value="#{subjectBean.test.input}"
-							required="true" />
+						<h:inputTextarea id="input"
+							value="#{subjectViewBean.testCase.input}" required="true" />
 					</div>
 					<h:message id="inputMessage" for="difficulty" errorClass="erreur" />
 				</div>
@@ -85,8 +116,8 @@
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-						<h:inputTextarea id="output" value="#{subjectBean.test.input}"
-							required="true" />
+						<h:inputTextarea id="output"
+							value="#{subjectViewBean.testCase.expected}" required="true" />
 					</div>
 					<h:message id="outputMessage" for="difficulty" errorClass="erreur" />
 				</div>
@@ -96,16 +127,16 @@
 					</h:outputLabel>
 					<div class="controls">
 
-						<h:selectBooleanCheckbox id="visible" value="#{subjectBean.test.visible}"
-							 />
+						<h:selectBooleanCheckbox id="visible"
+							value="#{subjectViewBean.testCase.visible}" />
 					</div>
 					<h:message id="visibleMessage" for="visible" errorClass="erreur" />
-				</div>				
+				</div>
 			</fieldset>
-			<h:commandLink action="#{subjectBean.addTestCase()}"
+			<h:commandLink action="#{subjectViewBean.addTestCase()}"
 				value="Ajouter" styleClass="link" />
-		<h:commandButton value="Enregistrement" action="#{subjectBean.save}"
-			styleClass="btn btn-inverse" />				
+			<h:commandButton value="Enregistrement" action="#{subjectBean.save}"
+				styleClass="btn btn-inverse" />
 		</h:form>
 
 		<h:form>

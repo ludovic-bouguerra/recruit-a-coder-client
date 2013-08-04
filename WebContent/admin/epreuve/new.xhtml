@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/admin.xhtml">
-	<ui:define name="content">
+	<ui:define name="admin-content">
 		<h:form styleClass="form-horizontal">
 			<fieldset>
 				<legend>Création d'une nouvelle épreuve</legend>
@@ -15,43 +16,34 @@
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-						<h:inputText id="title" value="#{subjectBean.subject.title}"
-							required="true" size="20" maxlength="60" />
+						<h:inputText id="title"
+							value="#{epreuveViewBean.epreuve.title}" required="true" size="20"
+							maxlength="60" />
 					</div>
 					<h:message id="titleMessage" for="title" errorClass="erreur" />
 					<br />
 				</div>
+
 				<div class="control-group">
-					<h:outputLabel styleClass="control-label" for="enonce">Sujet <span
+
+					<h:outputLabel styleClass="control-label" for="visible">Epreuve visible <span
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-
-						<h:inputTextarea id="enonce" value="#{subjectBean.subject.enonce}"
-							required="true" />
+						<h:selectBooleanCheckbox id="visible"
+							value="#{epreuveViewBean.epreuve.visible}" required="true" 
+							 />
 					</div>
-					<h:message id="enonceMessage" for="enonce" errorClass="erreur" />
+					<h:message id="visibleMessage" for="title" errorClass="erreur" />
+					<br />
 				</div>
-				<br />
-				<div class="control-group">
-					<h:outputLabel styleClass="control-label" for="difficulty">Difficultée (1-5) <span
-							class="requis">*</span>
-					</h:outputLabel>
-					<div class="controls">
-
-						<h:inputTextarea id="difficulty"
-							value="#{subjectBean.subject.difficulty}" required="true" />
-					</div>
-					<h:message id="difficultyMessage" for="difficulty"
-						errorClass="erreur" />
-				</div>
-				<h:messages globalOnly="true" infoClass="info" />
-
+				<p:pickList id="subjects" value="#{epreuveViewBean.subjects}" var="subject"
+					itemLabel="#{subject.title}" itemValue="#{subject}" />
 			</fieldset>
-			
 
-		<h:commandButton value="Enregistrement" action="#{epreuveBean.save()}"
-			styleClass="btn btn-inverse" />				
+
+			<h:commandButton value="Enregistrement"
+				action="#{epreuveViewBean.save()}" styleClass="btn btn-inverse" />
 		</h:form>
 
 		<h:form>

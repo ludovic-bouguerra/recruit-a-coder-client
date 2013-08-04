@@ -1,14 +1,17 @@
 package fr.ludovicbouguerra.ecodigo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,32 +27,39 @@ public class Epreuve implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
+	private String title;
+	
 	@Temporal(value = TemporalType.DATE)
-	private Date beginDate;
+	private Date createdAt;
 	
-	private List<Subject> subject;
+	@ManyToMany(cascade=CascadeType.ALL)
+	private List<Subject> subjects;
 	
+	private boolean visible;
+
+	public Epreuve(){
+		subjects = new ArrayList<Subject>();
+	}
 	
-	/**
-	 * Conquest url
-	 */
-	@Column(unique=true)
-	private String url;
+	public void addSubject(Subject subject){
+		subjects.add(subject);
+
+	}
 	
-	public List<Subject> getSubject() {
-		return subject;
+	public List<Subject> getSubjects() {
+		return subjects;
 	}
 
-	public void setSubject(List<Subject> subject) {
-		this.subject = subject;
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
 	}
 	
-	public Date getBeginDate() {
-		return beginDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setBeginDate(Date beginDate) {
-		this.beginDate = beginDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public int getId() {
@@ -58,6 +68,22 @@ public class Epreuve implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

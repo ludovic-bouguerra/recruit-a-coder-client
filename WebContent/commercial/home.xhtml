@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+
+<ui:composition template="/template/base.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="assets/pricingtable"
+			name="pricingtable.css" target="head" />
+		<div id="marketing-bar-container" class="blue">
+			<div class="container">
+				<div class="row">
+					<div class="span5">
+						<h:graphicImage library="imgs" name="selection.png" />
+					</div>
+					<div class="span7 marketing-infos">
+						<h1 class="center">Une nouvelle façon de recruter</h1>
+						<h2 class="center">Donnez vous toutes les chances de trouver
+							le bon candidat</h2>
+						<span><center>
+						<pretty:link styleClass="btn btn-danger btn-large"
+								mappingId="register"> 
+					           Essayez pendant 5 jours gratuitement !
+        					</pretty:link>
+							</center></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<h1>
+				<a name="fonctionnement">Un fonctionnement en 3 étapes</a>
+			</h1>
+			<div class="row steps-illustations">
+				<div class="span4">
+					<h:graphicImage library="imgs" name="cv.png" />
+				</div>
+				<div class="span3 mail">
+					<h:graphicImage library="imgs" name="mail.png" />
+				</div>
+				<div class="span4">
+					<h:graphicImage library="imgs" name="results.png" />
+				</div>
+			</div>
+			<div class="row steps">
+				<div class="span4 center">
+					<center>
+						<div class="point">1</div>
+					</center>
+				</div>
+				<div class="span3 center">
+					<center>
+						<div class="point">2</div>
+					</center>
+				</div>
+				<div class="span4 center">
+					<center>
+						<div class="point">3</div>
+					</center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4 center">Recevez des cv de candidats</div>
+				<div class="span3 center">Invitez les à participer à un test
+					technique</div>
+				<div class="span4 center">Analysez les résultats du candidat
+					et faites votre choix</div>
+			</div>
+		</div>
+		<hr />
+		<div class="container">
+			<h1 name="tarifs">
+				<a name="tarifs">Tarifs</a>
+			</h1>
+			<div class="row">
+				<div class="span4">
+					<ul class="unstyled price-table">
+						<li class="headline">Open Source edition</li>
+						<li class="price">Free</li>
+						<li class="info">Installez la solution au sein de votre
+							entreprise</li>
+						<li>Nombre de candidats illimités</li>
+						<li>Maintenance non incluse (Option payante)</li>
+						<li>Bases de données de tests non incluse</li>
+						<li>Aucune statistiques</li>
+						<li class="last"><pretty:link styleClass="button"
+								mappingId="register"> 
+					           Télécharger gratuitement
+        					</pretty:link></li>
+					</ul>
+				</div>
+				<div class="span4">
+					<ul class="unstyled price-table featured">
+						<li class="headline">A la carte</li>
+						<li class="price">25 €</li>
+						<li class="info">Solution prête à l'emploi pour des besoins
+							occasionnels</li>
+						<li>5 candidats</li>
+						<li>Maintenance incluse</li>
+						<li>Accès à une bibliothèque de sujets</li>
+						<li>Statistiques basiques</li>
+						<li class="last"><pretty:link styleClass="button"
+								mappingId="register"> 
+					           S'inscrire
+        					</pretty:link></li>
+					</ul>
+				</div>
+				<div class="span4">
+					<ul class="unstyled price-table">
+						<li class="headline">Edition premium</li>
+						<li class="price">100 € / mois</li>
+						<li class="info">Idéal pour les grandes entreprises ou les
+							agences de recrutement</li>
+						<li>Nombre de candidats illimités</li>
+						<li>Maintenance incluse</li>
+						<li>Accès à une collections de 100 épreuves</li>
+						<li>Statistiques détaillées</li>
+						<li class="last"><pretty:link styleClass="button"
+								mappingId="register"> 
+					           S'inscrire
+        					</pretty:link></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="container">
+			<h1>
+				<a name="essayez">Essayez !</a>
+			</h1>
+			<div class="row">
+				<span class="offset4 span5"><h3>Mettez vous en situation
+						d'examen et testez notre solution</h3></span>
+			</div>
+			<div class="row">
+				<span class="offset3 span4"><a href="#"
+					class="btn btn-inverse btn-large">En tant que candidat</a></span><span
+					class="span4"><a href="#" class="btn btn-inverse btn-large">En
+						tant que recruteur</a></span>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

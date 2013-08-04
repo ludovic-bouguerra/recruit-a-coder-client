@@ -1,0 +1,97 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+
+	<!--  Commercial configuration -->
+	<url-mapping id="home">
+		<pattern value="/" />
+		<view-id value="/commercial/home.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="register">
+		<pattern value="/register" />
+		<view-id value="/commercial/inscription.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/commercial/login.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="mentions-legales">
+		<pattern value="/mentions-legales" />
+		<view-id value="/commercial/mentions-legales.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="cgu-cgv">
+		<pattern value="/cgu-cgv" />
+		<view-id value="/commercial/cgu-cgv.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="retrieve-password">
+		<pattern value="/retrieve-password" />
+		<view-id value="/commercial/mot-de-passe-perdu.xhtml" />
+	</url-mapping>	
+
+
+	<url-mapping id="validation">
+		<pattern value="/validation" />
+		<view-id value="/commercial/validation.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="valide">
+		<pattern value="/valide" />
+		<view-id value="/commercial/valide.xhtml" />
+	</url-mapping>
+	
+	<!-- Manager configuration -->
+	
+	<!--  Manager Home -->
+	<url-mapping id="manager_home">
+		<pattern value="/manager" />
+		<view-id value="/admin/dashboard/home.xhtml" />
+	</url-mapping>	
+
+	<!--  Manager epreuves -->
+	<url-mapping id="manager_epreuve_list">
+		<pattern value="/manager/epreuve/list" />
+		<view-id value="/admin/epreuve/list.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="manager_epreuve_new">
+		<pattern value="/manager/epreuve/new" />
+		<view-id value="/admin/epreuve/new.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="manager_epreuve_edit">
+		<pattern value="/manager/epreuve/edit/{id}" />
+		<view-id value="/admin/epreuve/new.xhtml" />
+	</url-mapping>	
+	
+	
+	<!--  Manager Subject -->
+	
+	<url-mapping id="manager_subject_list">
+		<pattern value="/manager/subject/list" />
+		<view-id value="/admin/subject/list.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="manager_subject_new">
+		<pattern value="/manager/subject/new" />
+		<view-id value="/admin/subject/new.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="manager_subject_new">
+		<pattern value="/manager/subject/edit/{id}" />
+		<view-id value="/admin/subject/new.xhtml" />
+	</url-mapping>		
+	
+	<!--  Manager Subject -->
+		<url-mapping id="manager_candidat_invite">
+		<pattern value="/manager/candidat/invite" />
+		<view-id value="/admin/candidat/invite.xhtml" />
+	</url-mapping>
+			
+</pretty-config>

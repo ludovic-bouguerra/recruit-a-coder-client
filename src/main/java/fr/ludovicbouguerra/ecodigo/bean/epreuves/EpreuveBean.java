@@ -7,7 +7,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 import fr.ludovicbouguerra.ecodigo.dao.IEpreuveDAO;
+import fr.ludovicbouguerra.ecodigo.dao.IUserDAO;
 import fr.ludovicbouguerra.ecodigo.model.Epreuve;
+import fr.ludovicbouguerra.ecodigo.model.User;
 
 @ManagedBean
 public class EpreuveBean {
@@ -15,21 +17,23 @@ public class EpreuveBean {
 	@EJB
 	private IEpreuveDAO epreuveDAO;
 	
-
-	private Epreuve epreuve;
+	@EJB
+	private IUserDAO userDAO;
 	
 	public EpreuveBean(){
-		epreuve = new Epreuve();
+
 	}
 	
-	public String save(){
-		epreuveDAO.create(epreuve);
-		return "list.xhtml";
+	
+	private String inviter(String email, int epreuveID){
+		User u = new User();
+		u.setEmail(email);
+		
+		return "";
 	}
 	
-	public String edit(){
-		epreuveDAO.update(epreuve);
-		return "list.xhtml";
+	public String edit(int id){
+		return "pretty:manager_epreuve_new?id="+id;
 	}
 
 	public IEpreuveDAO getEpreuveDAO() {
@@ -40,13 +44,6 @@ public class EpreuveBean {
 		this.epreuveDAO = epreuveDAO;
 	}
 
-	public Epreuve getEpreuve() {
-		return epreuve;
-	}
-
-	public void setEpreuve(Epreuve epreuve) {
-		this.epreuve = epreuve;
-	}
 	
 	public List<Epreuve> listEpreuves(){
 		return epreuveDAO.findAllEpreuves();

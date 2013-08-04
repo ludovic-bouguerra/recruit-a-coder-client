@@ -11,7 +11,7 @@ import fr.ludovicbouguerra.ecodigo.model.TestCases;
 @Local(value=ITestCaseDAO.class)
 public class TestCasesDAO implements ITestCaseDAO{
     
-	@PersistenceContext
+	@PersistenceContext(unitName="codigo")
 	EntityManager em;
 	
 

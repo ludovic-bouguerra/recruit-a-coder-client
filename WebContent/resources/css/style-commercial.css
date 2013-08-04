@@ -1,0 +1,134 @@
+.margin{
+margin-top :50px;
+}
+.center{
+	text-align:center;
+}
+
+#top-bar-container{
+	height: 80px;
+}
+
+#top-bar-container .menu a{
+	color: white;
+}
+
+#top-bar-container .menu li{
+	float:left;
+	line-height:80px;
+	margin-left: 20px;
+
+}
+
+#marketing-bar-container{
+	padding-top:50px;
+	height: 300px;
+}
+
+#marketing-bar-container h1{
+	font-size: 25pt;
+	margin-top : 60px;
+	margin-bottom:0;
+	padding-bottom:0;
+}
+
+#marketing-bar-container h2{
+	padding-top:0;
+	margin-top: 0;
+	font-size: 12pt;
+}
+
+#footer{
+	height: 300px;
+	padding-top : 50px;
+	color: white;
+	margin-top: 100px;
+}
+
+#footer ul{
+	list-style-type:none;
+}
+
+#footer h1{
+	font-size: 14pt;
+}
+
+#mentions-legales{
+	height:60px;
+	line-height: 60px;
+}
+
+#mentions-legales a{
+	color:white;
+	text-decoration: underline;
+
+}
+
+.brown{
+	background-color: rgb(51, 51, 51);
+}
+.blue{
+	background-color: rgb(16, 206, 250);
+	color: white;
+}
+
+.black{
+	background-color: black;
+	color: white;
+}
+
+
+.point{
+	background-image: url(../imgs/point.png);
+	color: white;
+	line-height: 23px;
+	width: 23px;
+	height: 23px;
+	text-align:center;
+}
+
+h1{
+	font-size: 20pt;
+}
+
+h3{
+	font-size: 10pt;
+}
+
+.steps{
+	margin-top: 20px;
+}
+
+.steps-illustations{
+
+	line-height: 140px;
+	text-align: center;
+	
+}
+
+.steps-illustations .mail{
+	padding-top: 40px;
+}
+
+#footer-actualites li p{
+	padding:0;
+	margin:0;
+}
+
+
+#footer-actualites li h1{
+	font-size: 11pt;
+	padding:0;
+	margin:0;
+	line-height:20px;
+}
+
+#footer-social ul{
+	padding:0;
+	margin:0;
+}
+
+#footer-social li{
+	float:left;
+	margin-right:10px;
+}

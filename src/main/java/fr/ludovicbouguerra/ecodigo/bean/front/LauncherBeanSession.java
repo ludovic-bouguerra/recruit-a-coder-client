@@ -30,7 +30,7 @@ public class LauncherBeanSession {
 	public LauncherBeanSession(){
 		index = 0;
 		responses = new ArrayList<UserResponse>();
-		checkedTestCases = new ArrayList<>();
+		checkedTestCases = new ArrayList<List<CheckedTestCase>>();
 	}
 	
 	

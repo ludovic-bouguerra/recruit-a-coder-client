@@ -14,7 +14,7 @@ import fr.ludovicbouguerra.ecodigo.model.Subject;
 @Local(value=ISubjectDAO.class)
 public class SubjectDAO implements ISubjectDAO{
 
-    @PersistenceContext
+	@PersistenceContext(unitName="codigo")
 	EntityManager em;
 	
 	@Override

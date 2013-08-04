@@ -61,7 +61,7 @@ public class LauncherBean {
 			Epreuve epreuve = epreuveDAO.findById(id);
 			
 			ArrayList<UserResponse> userResponses = new ArrayList<UserResponse>();
-			for(Subject sub : epreuve.getSubject()){
+			for(Subject sub : epreuve.getSubjects()){
 				UserResponse u = new UserResponse();
 				UserEpreuve userEpreuve = new UserEpreuve();
 				userEpreuve.setEpreuve(epreuve);

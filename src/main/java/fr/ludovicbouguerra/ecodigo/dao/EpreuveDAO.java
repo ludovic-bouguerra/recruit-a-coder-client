@@ -14,11 +14,12 @@ import fr.ludovicbouguerra.ecodigo.model.Epreuve;
 @Local(value=IEpreuveDAO.class)
 public class EpreuveDAO implements IEpreuveDAO{
 
-	@PersistenceContext
+	@PersistenceContext(unitName="codigo")
 	private EntityManager em;
 	
 	public void create(Epreuve epreuve){
 		em.persist(epreuve);
+		em.flush();
 	}
 	
 	public void update(Epreuve epreuve){

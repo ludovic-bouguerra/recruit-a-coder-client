@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+
+<ui:composition template="/template/base.xhtml">
+	<ui:define name="content">
+		<div id="content" class="margin">
+			<div class="container">
+				<h1>Paiement validé</h1>
+				<div class="row">
+					<div class="offset1 span11">
+						<p>Un mail de confirmation vous sera envoyé, vous pouvez dès à
+							présent vous connecter et utiliser vos crédits</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="container">
+			<div class="row">
+				<span class="offset4 span4"><pretty:link mappingId="login" styleClass="btn btn-inverse btn-large">Se connecter</pretty:link></span>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

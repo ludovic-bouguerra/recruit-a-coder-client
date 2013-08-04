@@ -1,0 +1,80 @@
+.pricing {
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+.price-table {
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin: 20px 0;
+}
+.price-table li {
+  border-bottom: 1px dashed #e1e1e1;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  text-align: center;
+}
+.price-table .headline {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.price-table .price {
+  text-align: center;
+}
+.price-table .info {
+  font-style: italic;
+  font-weight: 400;
+}
+.price-table .btn,
+.price-table .button {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 0;
+  text-align: center;
+  width: 70%;
+}
+.price-table .button {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  color: #949494;
+  font-size: 16px;
+  text-decoration: none;
+  -webkit-box-shadow: 0px 10px 5px -8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 10px 5px -8px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
+  transition: all 50ms ease-in;
+}
+.price-table .button:hover {
+  text-decoration: none;
+  -webkit-box-shadow: 0px 9px 5px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 9px 5px -10px rgba(0, 0, 0, 0.3);
+}
+.price-table .last {
+  border: 0;
+  padding: 20px 0;
+}
+.price-table.featured {
+  background: #18c7f9;
+  border: 1px solid #06bdf1;
+  -webkit-box-shadow: 0px 15px 5px -8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 5px -8px rgba(0, 0, 0, 0.2);
+}
+.price-table.featured li {
+  border-bottom: 1px dashed #06aad8;
+  color: #fff;
+}
+.price-table.featured li.last {
+  border: 0px;
+}
+.price-table.featured .button {
+  background: #ffffff;
+  border: 0px solid #e6e6e6;
+  color: #18c7f9;
+  font-weight: 700;
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

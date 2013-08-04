@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/template/base.xhtml">
+	<ui:define name="content">
+		<div id="content" class="margin">
+			<form method="post" action="j_security_check">
+				<div class="container">
+					<h1>
+						<a name="connexion">Connexion aux services</a>
+					</h1>
+					<div class="row margin">
+						<div class="offset2 span8">
+
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Adresse
+										e-mail</label>
+									<div class="controls">
+										<input type="text" name="j_username" class="span6" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Mot de
+										passe</label>
+									<div class="controls">
+										<input type="password" class="span6" name="j_password"  />
+									</div>
+								</div>
+							</fieldset>
+							<div class="row">
+								<h:outputLink value="inscription.xhtml" styleClass="offset1 span2">Créer un compte ?</h:outputLink> <h:outputLink value="mot-de-passe-perdu.xhtml">Mot de passe perdu ?</h:outputLink>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="margin" />
+				<div class="container ">
+					<div class="row margin">
+
+						<div class="offset4 span2">
+
+							<input type="submit" class="btn btn-inverse btn-large" value="Se connecter"/>
+								
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

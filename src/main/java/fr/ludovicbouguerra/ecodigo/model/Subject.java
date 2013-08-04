@@ -2,6 +2,7 @@ package fr.ludovicbouguerra.ecodigo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Subject implements Serializable{
@@ -40,9 +44,18 @@ public class Subject implements Serializable{
 	 */
 	private int difficulty;
 	
+	@Temporal(TemporalType.TIME)
+	private Date timeLimit;
+
 	
+	@ManyToMany(mappedBy="subjects")
+	private List<Epreuve> epreuves;
+	
+
+
 	public Subject(){
 		testCases = new ArrayList<TestCases>();
+		epreuves = new ArrayList<Epreuve>();
 	}
 	
 	/**
@@ -58,7 +71,7 @@ public class Subject implements Serializable{
 	public void setEnonce(String enonce) {
 		this.enonce = enonce;
 	}
-
+	
 	public List<TestCases> getTestCases() {
 		return testCases;
 	}
@@ -91,5 +104,31 @@ public class Subject implements Serializable{
 		this.difficulty = difficulty;
 	}
 	
+	public void addTestCase(TestCases testCase){
+		testCase.setSubject(this);
+		testCases.add(testCase);
+	}
+
+	public Date getTimeLimit() {
+		return timeLimit;
+	}
+
+	public void setTimeLimit(Date timeLimit) {
+		this.timeLimit = timeLimit;
+	}
+	
+	public List<Epreuve> getEpreuves() {
+		return epreuves;
+	}
+
+	public void setEpreuves(List<Epreuve> epreuves) {
+		this.epreuves = epreuves;
+	}
+	
+	public void addEpreuve(Epreuve epreuve){
+		epreuves.add(epreuve);
+	}
+	
+
 	
 }

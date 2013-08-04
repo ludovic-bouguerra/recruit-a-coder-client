@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/template/base.xhtml">
+	<ui:define name="content">
+		<h:form>
+		<div id="content" class="margin">
+			<div class="container">
+				<h1>
+					<a name="coordonnees">Ma commande</a>
+				</h1>
+				<div class="row">
+					<div class="offset1 span5">
+						<h1>Mes informations</h1>
+						<p>
+							<h:outputText value="#{accountBean.account.firstName} #{accountBean.account.lastName}"/><br /><h:outputText value="#{accountBean.account.adress1}"/><br /><h:outputText value="#{accountBean.account.adress2}"/>
+						</p>
+						<h1>Mon abonnement</h1>
+						<p>Abonement prémium</p>
+						<h1>Tarif</h1>
+						<p>Abonement prémium</p>						
+						
+					</div>
+
+				</div>
+				<h1>
+					<a name="coordonnees">Moyens de paiement</a>
+				</h1>
+				<ul>
+					<li><input type="radio" id="radio-paypal" /><label
+						for="radio-paypal">Paypal</label></li>
+				</ul>
+			</div>
+		</div>
+		<hr />
+		<div class="container">
+			<div class="row">
+				<span class="offset3 span4"><a href="#"
+					class="btn btn-inverse btn-large">Modifier ma commande</a></span><span
+					class="span4"><h:commandLink action="#{accountBean.validate()}" value="Passer au paiement" styleClass="btn btn-inverse btn-large" /></span>
+			</div>
+		</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

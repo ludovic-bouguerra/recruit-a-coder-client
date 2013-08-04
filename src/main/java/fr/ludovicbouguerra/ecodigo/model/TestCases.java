@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,6 +22,7 @@ public class TestCases implements Serializable{
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="SUBJECT_ID", nullable=false)
 	private Subject subject;
 	
 	private String description;
@@ -28,8 +30,6 @@ public class TestCases implements Serializable{
 	private String input;
 	
 	private String expected;
-	
-	
 	
 	/**
 	 * Visible or not for the user

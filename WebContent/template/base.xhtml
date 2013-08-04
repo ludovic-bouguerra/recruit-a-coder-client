@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+<h:head>
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<h:outputStylesheet library="assets/bootstrap/css"
+		name="bootstrap.min.css" target="head" />
+	<h:outputStylesheet library="css" name="style-commercial.css"
+		target="head" />
+	<meta charset="utf-8" />
+</h:head>
+<h:body>
+	<!-- Begin container -->
+	<div id="container">
+		<div id="top-bar-container" class="brown">
+			<div class="container row">
+				<pretty:link styleClass="span6" mappingId="home">
+					<h:graphicImage library="imgs" name="logo.png" />
+				</pretty:link>
+				<ul class="menu span5">
+					<ui:insert name="menu">
+
+						<li><pretty:link styleClass="" mappingId="home"
+								anchor="fonctionnement"> 
+					            Fonctionnement
+        				</pretty:link></li>
+						<li><pretty:link styleClass="" mappingId="home"
+								anchor="tarifs"> 
+					            Tarifs
+        				</pretty:link></li>
+						<li><pretty:link styleClass="" mappingId="home"
+								anchor="essayez"> 
+					            Essayez
+        				</pretty:link></li>
+						<li><pretty:link styleClass="" mappingId="manager_home"> 
+					            Espace client
+        				</pretty:link></li>
+					</ui:insert>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+	<div id="content">
+		<ui:insert name="content" />
+	</div>
+	<!-- end container -->
+	<!-- Begin footer -->
+	<div id="footer" class="brown">
+		<div class="container">
+			<div class="row">
+				<div id="footer-actualites" class="span4">
+					<h1>Les dernières actualités</h1>
+					<ul>
+						<li>
+							<h1>Actualité</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Sed placerat nisl ultricies ante suscipit accumsan. Suspendisse.</p>
+						</li>
+					</ul>
+				</div>
+
+				<div class="span4">
+					<h1>Nous contacter</h1>
+					<ul>
+						<li>Code Sample</li>
+						<li>2 boulevard ledru rollin</li>
+						<li>29 Campagne leveque</li>
+						<li>13015 Marseille</li>
+						<li><a href="mailto:contact@codesample.com">contact@codesample.com</a></li>
+
+					</ul>
+				</div>
+				<div id="footer-social" class="span3">
+					<h1>Nous suivre !</h1>
+					<ul>
+						<li><a href="#"><h:graphicImage library="assets/social"
+									name="facebook.png" /></a></li>
+						<li><a href="#"><h:graphicImage library="assets/social"
+									name="twitter.png" /></a></li>
+						<li><a href="#"><h:graphicImage library="assets/social"
+									name="gplus.png" /></a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+	<div id="mentions-legales" class="black">
+		<div class="container row">
+			<span class="span8">&copy; Ludovic Bouguerra 2013</span><span
+				class="span1"><pretty:link mappingId="cgu-cgv">
+				CGU/CGV</pretty:link> </span><span class="span2"><pretty:link
+					mappingId="mentions-legales">Mentions légales</pretty:link> </span>
+		</div>
+	</div>
+</h:body>
+
+</html>
