@@ -29,6 +29,8 @@ public class EpreuveBean {
 		User u = new User();
 		u.setEmail(email);
 		
+		
+		
 		return "";
 	}
 	
@@ -36,6 +38,11 @@ public class EpreuveBean {
 		return "pretty:manager_epreuve_new?id="+id;
 	}
 
+	public String remove(int id){
+		epreuveDAO.remove(id);
+		return "pretty:manager_epreuve_list";
+	}
+	
 	public IEpreuveDAO getEpreuveDAO() {
 		return epreuveDAO;
 	}

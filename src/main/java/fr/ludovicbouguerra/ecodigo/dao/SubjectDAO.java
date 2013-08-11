@@ -18,8 +18,8 @@ public class SubjectDAO implements ISubjectDAO{
 	EntityManager em;
 	
 	@Override
-	public void createSubject(Subject subject) {
-		em.persist(subject);
+	public void save(Subject subject) {
+		em.merge(subject);
 		em.flush();
 	}
 	

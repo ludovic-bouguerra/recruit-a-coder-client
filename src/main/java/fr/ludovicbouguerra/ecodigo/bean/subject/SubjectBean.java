@@ -35,7 +35,7 @@ public class SubjectBean {
 			subjectViewBean.addTestCase();	
 		}
 		
-		subjectDAO.createSubject(subjectViewBean.getSubject());
+		subjectDAO.save(subjectViewBean.getSubject());
 		return "list.xhtml";
 	}
 	

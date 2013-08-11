@@ -16,28 +16,11 @@
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-						<h:inputText id="email" value="#{candidatBean.user.email}"
-							required="true" size="20" maxlength="60" />
+						<h:inputText id="email"
+							value="#{candidatBean.user.email}" required="true" size="20"
+							maxlength="60" />
 					</div>
 					<h:message id="titleMessage" for="title" errorClass="erreur" />
-					<br />
-				</div>
-
-				<div class="control-group">
-
-					<h:outputLabel styleClass="control-label" for="epreuve">Epreuve<span
-							class="requis">*</span>
-					</h:outputLabel>
-					<div class="controls">
-						<h:selectOneMenu id="subscriptions"
-							value="#{candidatBean.epreuve.id}">
-							<f:selectItems value="#{epreuveBean.listEpreuves()}" var="epreuve"
-								itemLabel="#{epreuve.title}" itemValue="#{epreuve.id}" />
-
-						</h:selectOneMenu>
-
-					</div>
-					<h:message id="epreuveMessage" for="title" errorClass="erreur" />
 					<br />
 				</div>
 

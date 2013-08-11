@@ -26,8 +26,8 @@ public class EpreuveDAO implements IEpreuveDAO{
 		em.merge(epreuve);
 	}
 	
-	public void remove(Epreuve epreuve){
-		em.remove(epreuve);
+	public void remove(int id){
+		em.remove(findById(id));
 	}
 	
 	public Epreuve findById(int id){

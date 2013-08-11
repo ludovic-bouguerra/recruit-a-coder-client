@@ -1,5 +1,7 @@
 package fr.ludovicbouguerra.ecodigo.bean.epreuves;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -61,6 +63,11 @@ public class EpreuveViewBean {
 
 	public void setEpreuve(Epreuve epreuve) {
 		this.epreuve = epreuve;
+	}
+
+	
+	public List<Subject> getSubjectList(){
+		return subjectDAO.findAllSubjects();
 	}
 	
 	public String save(){

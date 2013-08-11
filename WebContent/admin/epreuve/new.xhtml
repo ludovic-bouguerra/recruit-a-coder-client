@@ -16,9 +16,8 @@
 							class="requis">*</span>
 					</h:outputLabel>
 					<div class="controls">
-						<h:inputText id="title"
-							value="#{epreuveViewBean.epreuve.title}" required="true" size="20"
-							maxlength="60" />
+						<h:inputText id="title" value="#{epreuveViewBean.epreuve.title}"
+							required="true" size="20" maxlength="60" />
 					</div>
 					<h:message id="titleMessage" for="title" errorClass="erreur" />
 					<br />
@@ -31,14 +30,19 @@
 					</h:outputLabel>
 					<div class="controls">
 						<h:selectBooleanCheckbox id="visible"
-							value="#{epreuveViewBean.epreuve.visible}" required="true" 
-							 />
+							value="#{epreuveViewBean.epreuve.visible}" required="true" />
 					</div>
 					<h:message id="visibleMessage" for="title" errorClass="erreur" />
 					<br />
 				</div>
-				<p:pickList id="subjects" value="#{epreuveViewBean.subjects}" var="subject"
-					itemLabel="#{subject.title}" itemValue="#{subject}" />
+
+				<h:selectManyCheckbox id="subjects"
+					value="#{epreuveViewBean.epreuve.subjects}">
+					<f:selectItems value="#{subjectBean.listSubjects()}" var="subject"
+						itemLabel="#{subject.title}" itemValue="#{subject.id}" />
+
+				</h:selectManyCheckbox>
+
 			</fieldset>
 
 

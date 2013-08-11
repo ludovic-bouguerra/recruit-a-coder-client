@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
 
 <ui:composition template="/template/admin.xhtml">
 	<ui:define name="admin-content">
 		<h1>Liste des epreuves</h1>
-		
+
 		<h:form>
 			<h:dataTable value="#{epreuveBean.listEpreuves()}" var="epreuve"
 				id="listTable" styleClass="table" headerClass="order-table-header"
@@ -23,25 +24,26 @@
 					<h:outputText id="title" value="#{epreuve.title}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Date de lancement</f:facet>
+					<f:facet name="header">Date de création</f:facet>
 					<h:outputText id="createdAt" value="#{epreuve.createdAt}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Date de lancement</f:facet>
+					<f:facet name="header">Epreuve visible</f:facet>
 					<h:outputText id="visible" value="#{epreuve.visible}" />
-				</h:column>				
+				</h:column>
 				<h:column>
 					<f:facet name="header">Supprimer</f:facet>
-					<h:commandButton styleClass="btn btn-inverse icon-remove"
-						id="commande" value="Supprimer" />
+					<h:commandButton action="#{epreuveBean.remove(epreuve.id)}" styleClass="btn btn-inverse" id="supprimer"
+						value="Supprimer" />
+					<h:commandButton styleClass="btn btn-inverse" id="editer"
+						value="Editer" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
 		<h:form>
-			<h:commandLink action="welcome.xhtml" value="Retour"
-				styleClass="link" />
-			<h:commandLink action="welcome.xhtml" value="Ajouter nouvelle épreuve"
-				styleClass="link" />
+			<pretty:link styleClass="btn btn-inverse" mappingId="manager_epreuve_new"> 
+				Créer une epreuve
+			</pretty:link>
 		</h:form>
 	</ui:define>
 </ui:composition>

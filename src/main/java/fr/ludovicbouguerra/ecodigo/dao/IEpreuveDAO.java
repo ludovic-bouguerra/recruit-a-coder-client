@@ -10,7 +10,7 @@ public interface IEpreuveDAO {
 	
 	public void update(Epreuve epreuve);
 	
-	public void remove(Epreuve epreuve);
+	public void remove(int id);
 	
 	public List<Epreuve> findAllEpreuves();
 	public Epreuve findById(int id);
