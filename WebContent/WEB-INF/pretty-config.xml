@@ -19,6 +19,11 @@
 		<pattern value="/login" />
 		<view-id value="/commercial/login.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="contact">
+		<pattern value="/contact" />
+		<view-id value="/commercial/contact.xhtml" />
+	</url-mapping>
 
 	<url-mapping id="mentions-legales">
 		<pattern value="/mentions-legales" />

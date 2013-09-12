@@ -58,9 +58,19 @@
 			<form-error-page>/commercial/login.xhtml</form-error-page>
 		</form-login-config>
 	</login-config>
-	<!-- <security-role> <description>administrateur</description> <role-name>administrateur</role-name> 
-		</security-role> <security-constraint> <web-resource-collection> <web-resource-name>Admininistration</web-resource-name> 
-		<url-pattern>/admin/*</url-pattern> <http-method>GET</http-method> <http-method>POST</http-method> 
-		</web-resource-collection> <auth-constraint> <role-name>*</role-name> </auth-constraint> 
-		</security-constraint> -->
+	<security-role>
+		<description>administrateur</description>
+		<role-name>administrateur</role-name>
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admininistration</web-resource-name>
+			<url-pattern>/manager/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>*</role-name>
+		</auth-constraint>
+	</security-constraint>
 </web-app>

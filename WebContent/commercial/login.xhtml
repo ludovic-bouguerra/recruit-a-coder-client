@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+	
 
 <ui:composition template="/template/base.xhtml">
 	<ui:define name="content">
@@ -32,7 +34,7 @@
 								</div>
 							</fieldset>
 							<div class="row">
-								<h:outputLink value="inscription.xhtml" styleClass="offset1 span2">Créer un compte ?</h:outputLink> <h:outputLink value="mot-de-passe-perdu.xhtml">Mot de passe perdu ?</h:outputLink>
+								<pretty:link mappingId="register" styleClass="offset1 span2">Créer un compte ?</pretty:link> <pretty:link mappingId="retrieve-password">Mot de passe perdu ?</pretty:link>
 							</div>
 						</div>
 					</div>
