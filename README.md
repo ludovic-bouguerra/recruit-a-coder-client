@@ -1,5 +1,5 @@
-ecodigo-client
-==============
+Recruit a coder plateform client part
+=====================================
 
 Recruit a coder is a web platform to automate developper recruitement process. Recruitement services can purpose technical tests to developper to know if he known languages basics.
 
