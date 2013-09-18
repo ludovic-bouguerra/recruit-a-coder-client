@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+
+
+<ui:composition template="/faces/template/admin.xhtml">
+	<ui:define name="admin-content">
+		<h:form styleClass="form-horizontal">
+			<fieldset>
+				<legend>Création d'une nouvelle épreuve</legend>
+				<div class="control-group">
+
+					<h:outputLabel styleClass="control-label" for="title">Titre <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+						<h:inputText id="title" value="#{epreuveViewBean.epreuve.title}"
+							required="true" size="20" maxlength="60" />
+					</div>
+					<h:message id="titleMessage" for="title" errorClass="erreur" />
+					<br />
+				</div>
+
+				<div class="control-group">
+
+					<h:outputLabel styleClass="control-label" for="visible">Epreuve visible <span
+							class="requis">*</span>
+					</h:outputLabel>
+					<div class="controls">
+						<h:selectBooleanCheckbox id="visible"
+							value="#{epreuveViewBean.epreuve.visible}" required="true" />
+					</div>
+					<h:message id="visibleMessage" for="visible" errorClass="erreur" />
+					<br />
+				</div>
+				<div class="control-group">
+    <p:dataTable id="subject" var="subject" value="#{epreuveViewBean.subjectsAvailable}" rowKey="#{subject.id}"  
+                 selection="#{epreuveViewBean.subjectsSelected}" selectionMode="multiple">  
+  
+        <f:facet name="header">  
+           Liste des sujets disponibles  
+        </f:facet>  
+  
+        <p:column headerText="Titre">  
+            #{subject.title}  
+        </p:column>  
+  
+        <p:column headerText="Date création">  
+            #{car.createdAt}  
+        </p:column>  
+
+    </p:dataTable> 
+				</div>
+			</fieldset>
+
+
+			<h:commandButton value="Enregistrement"
+				action="#{epreuveViewBean.save()}" styleClass="btn btn-inverse" />
+		</h:form>
+		<pretty:link mappingId="epreuve" styleClass="btn btn-inverse">Retour</pretty:link>
+
+
+	</ui:define>
+</ui:composition>
+</html>

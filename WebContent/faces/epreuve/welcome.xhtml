@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="#{request.contextPath}/assets/ace/ace.js"></script>
+	<!-- <h:outputStylesheet library="assets/bootstrap/css"
+		name="bootstrap.min.css" />
+	<h:outputScript library="assets/bootstrap/js" name="bootstrap.min.js" />-->
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Joti+One'
+		rel='stylesheet' type='text/css' />
+
+
+	<script language="Javascript" type="text/javascript">
+		$(document).ready(function() {
+			var editor = ace.edit("editor");
+			editor.setTheme("ace/theme/eclipse");
+			editor.getSession().setMode("ace/mode/javascript");
+			var textarea = $('#code_form\\:code').hide();
+			editor.getSession().setValue(textarea.val());
+			editor.getSession().on('change', function() {
+				textarea.val(editor.getSession().getValue());
+			});
+
+		});
+	</script>
+	<title>ECodigo</title>
+</h:head>
+<h:body>
+	<h:form id="code_form">
+
+		<div id="header" class="grey">
+			<span class="company">E-Codigo</span>
+			<h:selectOneMenu value="#{launcher.language}">
+				<f:selectItem itemValue="java" itemLabel="Java" />
+			</h:selectOneMenu>
+			<h:commandButton value="Lancer la compilation"
+				action="#{launcher.launch}"></h:commandButton>
+		</div>
+		<div id="container">
+			<div id="presentation" class="greycl">
+				<div id="presentation-content">
+					<h1>Epreuve de test</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+						hendrerit diam in ligula mattis blandit. Phasellus porttitor
+						dapibus faucibus. Aliquam viverra nisi massa, a aliquet urna
+						fringilla nec. Integer gravida purus nec pretium varius. Sed vel
+						est quis felis lobortis elementum. Aliquam in nibh a nibh lobortis
+						consequat ac sit amet dui. Praesent sagittis ullamcorper dui eget
+						viverra. Etiam pretium odio sit amet ipsum varius, vel vehicula
+						magna semper. Donec pellentesque bibendum varius. Cras auctor
+						felis nibh, fringilla faucibus velit porta nec. Suspendisse ut
+						placerat enim, ut malesuada felis.</p>
+					<p>Quisque sagittis rutrum velit, nec tempor orci varius id.
+						Mauris cursus mi non felis luctus hendrerit. Aliquam in dignissim
+						est, eget eleifend turpis. Maecenas eu libero vitae massa tempus
+						rutrum. Nunc a velit vel tellus vehicula mattis. Aenean luctus
+						dolor dui, eget placerat nisl dignissim ut. Sed faucibus orci leo,
+						in mattis sem vulputate tristique. Sed id adipiscing eros. Nunc
+						tincidunt diam et lorem vestibulum, et mollis lacus scelerisque.
+						Integer dolor nunc, placerat non adipiscing sit amet, placerat ut
+						mi. Integer scelerisque neque commodo convallis lacinia. Cras
+						luctus velit consectetur, malesuada urna nec, auctor tortor. Duis
+						porttitor metus eget massa mollis, vitae cursus enim porta.</p>
+					<p>Integer eu lectus iaculis, elementum enim volutpat, dictum
+						massa. Sed lorem erat, vehicula porta lorem vitae, elementum
+						tristique tortor. Curabitur porttitor mollis est, quis ullamcorper
+						mauris varius a. Vestibulum ante ipsum primis in faucibus orci
+						luctus et ultrices posuere cubilia Curae; Integer quam enim,
+						volutpat id fringilla in, gravida vitae est. Proin id sem est.
+						Phasellus vel enim nisi.</p>
+					<p>Morbi magna ipsum, tempus at commodo eget, dictum vitae
+						nisl. Sed eget convallis metus. Curabitur rhoncus augue sit amet
+						eros ultrices tempus. Etiam ultrices quis ligula eu placerat.
+						Aenean sem justo, sodales sit amet ipsum eget, scelerisque ornare
+						nisi. Cras ac ligula semper, accumsan risus ac, vehicula ante.
+						Nunc bibendum egestas tempus. Pellentesque mattis enim vel gravida
+						cursus. Pellentesque habitant morbi tristique senectus et netus et
+						malesuada fames ac turpis egestas. Praesent ac pretium massa.
+						Mauris suscipit purus non nibh commodo, eu facilisis dolor varius.
+						Nam aliquet erat eu mi congue, eget viverra erat dignissim. Aenean
+						posuere ullamcorper fermentum. Nunc at lacinia tortor, hendrerit
+						ornare lectus. Quisque ultrices lobortis vestibulum. Sed in sem ut
+						sem lacinia hendrerit.</p>
+					<p>Nam in risus eget eros mattis euismod sed vitae risus.
+						Maecenas ac cursus diam. Phasellus faucibus auctor libero, in
+						tristique ipsum. Aenean non eros et urna laoreet semper. Etiam at
+						augue id risus blandit porttitor sed eget ligula. Duis elementum
+						orci id bibendum pharetra. Quisque turpis nibh, hendrerit ut
+						tincidunt vitae, malesuada sit amet sem. In aliquam mi in diam
+						fermentum, id vehicula nulla cursus. Nunc ligula massa, iaculis ac
+						vulputate ut, fringilla vitae mauris. Sed vulputate vulputate
+						tortor, ut iaculis est vulputate et. In non ornare massa. Mauris
+						vel tellus a arcu consequat tristique. Nunc et dolor ligula. Donec
+						tempus dapibus nisl facilisis facilisis.</p>
+
+					<h:inputTextarea id="code" value="#{launcher.code}"></h:inputTextarea>
+				</div>
+			</div>
+			<div id="editor"></div>
+			<div id="result">
+				<h:messages errorClass="error" infoClass="info" />  
+			</div>
+		</div>
+		<div id="footer" class="greycl">(c) 2013 Ludovic Bouguerra</div>
+	</h:form>
+
+</h:body>
+</html>
