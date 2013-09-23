@@ -33,14 +33,39 @@ You can deploy the war in glassfish.
 
 Configure SMTP server
 =====================
-(Comming soon)
+Go to your glassfish web administration at localhost:4848
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/glassfish-mail-1.png)
 
-Configure Databse server
+On the left menu in "Ressources" select Session JavaMail
+
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/glassfish-mail-2.png)
+
+Click on New to create a new JavaMail Session
+
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/glassfish-mail-3.png)
+
+You have to call it mail/codigo and configure it with your smtp server parameters.
+
+Configure Database server
 ========================
-(Comming soon)
+You have to configure a JDBC ressource called jdbc/ecodigo.
+
+The configuration may differs depending your database server.
+
+For mysql follow theses instructions : http://www.albeesonline.com/blog/2008/08/06/creating-and-configuring-a-mysql-datasource-in-glassfish-application-server/
+
+
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/database-configuration.png)
 
 Installation authentication system
 ===================================
+With JDBC
+(Comming soon)
+
+With File
+(Comming soon)
+
+With LDAP Systems.
 (Comming soon)
 
 
@@ -48,6 +73,20 @@ Installation authentication system
 Result
 ======
 
+Back Office
+===========
+
+Invite a user : 
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/backoffice-1.png)
+
+Subject creation :
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/backoffice-2.png)
+![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/backoffice-3.png)
+
+
+
+Front Office
+============
 ![ScreenShot](http://www.ludovicbouguerra.fr/wp-content/uploads/2013/09/capture-ecran-recruit-a-coder.png)
 
 Demonstration
