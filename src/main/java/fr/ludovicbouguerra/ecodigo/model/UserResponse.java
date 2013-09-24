@@ -1,12 +1,15 @@
 package fr.ludovicbouguerra.ecodigo.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,20 +24,26 @@ public class UserResponse implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	
+	@ManyToOne(targetEntity=UserEpreuve.class)
 	private UserEpreuve userEpreuve;
+	
+	@OneToMany(mappedBy="userResponse", targetEntity=UserResponseTestCase.class)
+	private Collection<UserResponseTestCase> testCases;
+	
+
+	@ManyToOne(targetEntity=Subject.class)
 	private Subject subject;
 	private String code;
 	private boolean valid;
 	private String language;
 	private String response;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateBegin;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dateEnd;
-	
-	
 
 
 	public Subject getSubject() {
@@ -101,6 +110,15 @@ public class UserResponse implements Serializable{
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
+	
+	public Collection<UserResponseTestCase> getTestCases() {
+		return testCases;
+	}
 
+	public void setTestCases(Collection<UserResponseTestCase> testCases) {
+		this.testCases = testCases;
+	}
+
+	
 	
 }

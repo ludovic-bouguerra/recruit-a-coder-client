@@ -13,8 +13,7 @@
 	<script src="#{request.contextPath}/assets/ace/ace.js"></script>
 	<h:outputStylesheet library="assets/bootstrap/css"
 		name="bootstrap.min.css" />
-	<h:outputStylesheet library="assets/cosmo"
-		name="bootswatch.css" />		
+	<h:outputStylesheet library="assets/cosmo" name="bootswatch.css" />
 	<h:outputScript library="assets/bootstrap/js" name="bootstrap.min.js" />
 
 	<h:outputStylesheet library="css" name="style.css" />
@@ -42,13 +41,14 @@
 		<div id="header" class="grey">
 			<div class="component">
 				<span class="company brand">Recruit A Coder</span>
-								
+
 				<h:selectOneMenu
-					value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].language}" styleClass="component" >
+					value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].language}"
+					styleClass="component">
 					<f:selectItem itemValue="java" itemLabel="Java" />
 
 				</h:selectOneMenu>
-				
+
 				<h:commandButton value="Lancer la compilation"
 					action="#{launcherBean.launcherSession.launch()}"
 					styleClass="btn btn-inverse btn-small component"></h:commandButton>
@@ -57,16 +57,16 @@
 					styleClass="btn btn-inverse btn-small component"></h:commandButton>
 				Exercice numéro
 				<h:outputText value="#{launcherBean.launcherSession.page}" />
-				/	
-				<h:outputText value="#{launcherBean.launcherSession.exerciceCount}" />					
+				/
+				<h:outputText value="#{launcherBean.launcherSession.exerciceCount}" />
 				<h:commandButton value="Exercice suivant"
 					action="#{launcherBean.launcherSession.nextStep()}"
 					styleClass="btn btn-inverse btn-small component"></h:commandButton>
 				<h:commandButton value="Envoyer mon résultat"
-					action="#{launcherBean.launcherSession.nextStep()}"
+					action="#{launcherBean.valid()}"
 					styleClass="btn btn-inverse btn-small component"></h:commandButton>
-				</div>				
-					
+			</div>
+
 		</div>
 		<div id="container">
 			<div id="presentation" class="greycl">
@@ -81,26 +81,30 @@
 
 					<h:inputTextarea id="code"
 						value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].code}">
-						</h:inputTextarea>
+					</h:inputTextarea>
 				</div>
 			</div>
 			<div id="editor"></div>
 			<div id="result">
 				<h1>Sortie console</h1>
-				
+
 				<c:choose>
-				    <c:when test="#{launcherBean.launcherSession.responses[launcherBeanSession.index].valid}">
-				        <c:set var="pClass" value="info"/>
-				        <c:set var="info" value="Félicitations, votre code est conforme."/>
-				    </c:when>
-				    <c:otherwise>
-				    	<c:set var="pClass" value="error"/>
-				    	<c:set var="info" value="Le résultat n'est pas conforme aux spécifications"/>
-				    </c:otherwise>
+					<c:when
+						test="#{launcherBean.launcherSession.responses[launcherBeanSession.index].valid}">
+						<c:set var="pClass" value="info" />
+						<c:set var="info" value="Félicitations, votre code est conforme." />
+					</c:when>
+					<c:otherwise>
+						<c:set var="pClass" value="error" />
+						<c:set var="info"
+							value="Le résultat n'est pas conforme aux spécifications" />
+					</c:otherwise>
 				</c:choose>
 				<h:outputText value="#{info}" />
-				<p class="#{pClass}" >
-					<h:outputText value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].response}" />
+				<p class="#{pClass}">
+						<h:outputText
+							value="#{launcherBean.launcherSession.responses[launcherBeanSession.index].response}" />
+
 				</p>
 
 			</div>

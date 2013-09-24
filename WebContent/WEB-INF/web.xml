@@ -14,11 +14,6 @@
 	</context-param>
 
 
-	<!-- Welcome page -->
-	<welcome-file-list>
-		<welcome-file>home.xhtml</welcome-file>
-	</welcome-file-list>
-
 	<!-- JSF mapping -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -46,16 +41,16 @@
 	</servlet-mapping>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/commercial/404.xhtml</location>
+		<location>/error/404.xhtml</location>
 	</error-page>
 	<!-- Security and Authentication -->
 
 	<login-config>
 		<auth-method>FORM</auth-method>
-		<realm-name>ecodigo-realm</realm-name>
+		<realm-name>concours-realm</realm-name>
 		<form-login-config>
-			<form-login-page>/commercial/login.xhtml</form-login-page>
-			<form-error-page>/commercial/login.xhtml</form-error-page>
+			<form-login-page>/login</form-login-page>
+			<form-error-page>/login</form-error-page>
 		</form-login-config>
 	</login-config>
 	<security-role>
@@ -64,8 +59,8 @@
 	</security-role>
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Admininistration</web-resource-name>
-			<url-pattern>/manager/*</url-pattern>
+			<web-resource-name>administrateur</web-resource-name>
+			<url-pattern>/manager/</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 		</web-resource-collection>

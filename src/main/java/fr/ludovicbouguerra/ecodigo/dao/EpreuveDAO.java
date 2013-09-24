@@ -24,6 +24,7 @@ public class EpreuveDAO implements IEpreuveDAO{
 	
 	public void update(Epreuve epreuve){
 		em.merge(epreuve);
+		em.flush();
 	}
 	
 	public void remove(int id){

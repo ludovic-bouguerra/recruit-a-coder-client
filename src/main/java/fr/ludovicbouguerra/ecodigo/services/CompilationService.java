@@ -13,7 +13,6 @@ import javax.naming.TimeLimitExceededException;
 import fr.ludovicbouguerra.ecodigo.compilationclient.CompilationClient;
 import fr.ludovicbouguerra.ecodigo.compilationclient.ICompilationClient;
 import fr.ludovicbouguerra.ecodigo.language.UnexpectedResult;
-import fr.ludovicbouguerra.ecodigo.result.IResult;
 
 @Stateless
 @Local(value = ICompilationService.class)
@@ -34,8 +33,8 @@ public class CompilationService implements ICompilationService{
 	}
 	
 	@Override
-	public Collection<IResult> sendCompilation(String code, String language,
-			ArrayList<String> inputData, ArrayList<String> expectedResult) throws TimeLimitExceededException, UnexpectedResult {		
+	public String sendCompilation(String code, String language,
+			String inputData, String expectedResult) throws TimeLimitExceededException, UnexpectedResult {		
 		return compilation.sendCompilation(code, language, inputData, expectedResult);
 	}
 

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,7 +52,8 @@ public class Subject implements Serializable{
 	@ManyToMany(mappedBy="subjects")
 	private List<Epreuve> epreuves;
 	
-
+	@ManyToOne(targetEntity=UserResponse.class)
+	private List<UserResponse> userResponses;
 
 	public Subject(){
 		testCases = new ArrayList<TestCases>();
@@ -129,6 +131,8 @@ public class Subject implements Serializable{
 		epreuves.add(epreuve);
 	}
 	
-
+	public String toString(){
+		return title;
+	}
 	
 }

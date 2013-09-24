@@ -37,6 +37,7 @@ public class Account implements Serializable {
 	private String adress2;
 	private String postalCode;
 	private String city;
+
 	private String password;
 	private String state;
 	private String country;

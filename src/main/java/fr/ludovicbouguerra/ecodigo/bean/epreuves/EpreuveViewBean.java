@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.model.DualListModel;
 
 import fr.ludovicbouguerra.ecodigo.dao.IEpreuveDAO;
 import fr.ludovicbouguerra.ecodigo.dao.ISubjectDAO;
@@ -18,18 +17,27 @@ import fr.ludovicbouguerra.ecodigo.model.Subject;
 @ManagedBean
 @ViewScoped
 public class EpreuveViewBean {
-    private DualListModel<Subject> subjects;
     
     private Epreuve epreuve;
-    
 	@EJB
 	private transient ISubjectDAO subjectDAO;
     
 	@EJB
 	private transient IEpreuveDAO epreuveDAO;
-	
-	
-    public EpreuveViewBean(){
+
+
+	private List<Subject> subjectsAvailable;
+	private Subject[] subjectsSelected;
+
+    public Subject[] getSubjectsSelected() {
+		return subjectsSelected;
+	}
+
+	public void setSubjectsSelected(Subject[] subjectsSelected) {
+		this.subjectsSelected = subjectsSelected;
+	}
+
+	public EpreuveViewBean(){
     	
     }
     
@@ -46,17 +54,10 @@ public class EpreuveViewBean {
 		}else {
 			epreuve = epreuveDAO.findById(id);
 		}
-    	setSubjects(new DualListModel<Subject>(subjectDAO.findAllSubjects(), epreuve.getSubjects()));
-    	
+		setSubjectsAvailable(subjectDAO.findAllSubjects());
+		subjectsSelected = epreuve.getSubjects().toArray(new Subject[epreuve.getSubjects().size()]);
     }
 
-	public DualListModel<Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(DualListModel<Subject> subjects) {
-		this.subjects = subjects;
-	}
 	public Epreuve getEpreuve() {
 		return epreuve;
 	}
@@ -69,12 +70,28 @@ public class EpreuveViewBean {
 	public List<Subject> getSubjectList(){
 		return subjectDAO.findAllSubjects();
 	}
+
 	
 	public String save(){
-		epreuve.setSubjects(subjects.getTarget());
-		epreuveDAO.create(epreuve);
+		
+		epreuve.getSubjects().clear();
+		for (Subject subject: subjectsSelected) {
+			epreuve.addSubject(subjectDAO.findById(subject.getId()));
+		}
+		epreuveDAO.update(epreuve);
 		return "pretty:manager_epreuve_list";
 	}
+
+	public List<Subject> getSubjectsAvailable() {
+		return subjectsAvailable;
+	}
+
+	public void setSubjectsAvailable(List<Subject> subjectsAvailable) {
+		this.subjectsAvailable = subjectsAvailable;
+	}
+
+
+
 
 	
 }

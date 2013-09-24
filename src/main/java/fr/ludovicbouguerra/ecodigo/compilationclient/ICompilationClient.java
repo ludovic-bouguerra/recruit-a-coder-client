@@ -1,6 +1,5 @@
 package fr.ludovicbouguerra.ecodigo.compilationclient;
 
-import java.util.ArrayList;
 
 import javax.naming.TimeLimitExceededException;
 
@@ -16,6 +15,6 @@ public interface ICompilationClient {
 	
 
 	
-	public String sendCompilation(String code, String language, ArrayList<String> inputData, ArrayList<String> expectedResult) throws TimeLimitExceededException, UnexpectedResult;
+	public String sendCompilation(String code, String language, String inputData, String expectedResult) throws TimeLimitExceededException, UnexpectedResult;
 	
 }

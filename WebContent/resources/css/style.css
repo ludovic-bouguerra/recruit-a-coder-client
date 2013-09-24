@@ -107,10 +107,11 @@ body{
 	position:absolute;
 	left:440px;
 	right:0;
-	height:60px;
+	height:150px;
 	bottom:0px;
 	border : 10px solid rgb(237,237,237); 
 	background-color:white;
+	overflow:auto;
 	
 }
 
@@ -119,7 +120,7 @@ body{
 	top:0;
 	left:400px;
 	right:0;
-	bottom:60px;
+	bottom:160px;
 	border : 10px solid rgb(237,237,237); 
 
 }

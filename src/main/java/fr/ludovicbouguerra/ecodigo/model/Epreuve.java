@@ -31,7 +31,7 @@ public class Epreuve implements Serializable{
 	@Temporal(value = TemporalType.DATE)
 	private Date createdAt;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	private List<Subject> subjects;
 	
 	private boolean visible;
@@ -41,6 +41,7 @@ public class Epreuve implements Serializable{
 	}
 	
 	public void addSubject(Subject subject){
+		subject.addEpreuve(this);
 		subjects.add(subject);
 
 	}

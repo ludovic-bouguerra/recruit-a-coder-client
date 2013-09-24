@@ -5,36 +5,44 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+
+
 <ui:composition template="/faces/template/admin.xhtml">
+
 	<ui:define name="admin-content">
-		<p:dataTable id="userEpreuve" var="userEpreuve" value="#{candidatResultBean.userEpreuves}" rowKey="#{user}"  
-                 selection="#{candidatResultBean.epreuve}" selectionMode="simple">  
-  
-        <f:facet name="header">  
+		<h:form>
+			<p:dataTable id="userEpreuve" var="userEpreuve"
+				value="#{candidatResultBean.userEpreuves}"
+				rowKey="#{userEpreuve.id}" selection="#{candidatResultBean.epreuve}"
+				selectionMode="single">
+
+				<f:facet name="header">  
            Résultat des candidats
-        </f:facet>  
-  
-        <p:column headerText="Candidat">  
+        </f:facet>
+
+				<p:column headerText="Candidat">  
             #{userEpreuve.user.email}  
-        </p:column>  
-  
-        <p:column headerText="Etat">  
-            None
         </p:column>
 
-        <p:column headerText="Date de réalisation">  
+		<p:column headerText="Etat">  
+        	#{userEpreuve.state}
+        </p:column>
+
+				<p:column headerText="Date de réalisation">  
             #{userEpreuve.dateBegin}  
         </p:column>
-        
-		<p:column headerText="Date de fin">  
+
+				<p:column headerText="Durée">  
             #{userEpreuve.dateEnd}  
         </p:column>
-          
-        <p:column headerText="Résultat">  
+
+				<p:column headerText="Résultat">  
             0%
         </p:column>
-    </p:dataTable> 
-
+			</p:dataTable>
+			<h:commandButton action="#{candidatResultBean.showResult()}"
+				value="Accéder au résultat" />
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

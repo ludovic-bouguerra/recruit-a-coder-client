@@ -3,25 +3,44 @@ package fr.ludovicbouguerra.ecodigo.bean.front;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.naming.TimeLimitExceededException;
 
-import fr.ludovicbouguerra.ecodigo.compilationclient.CompilationClient;
-import fr.ludovicbouguerra.ecodigo.compilationclient.ICompilationClient;
+
 import fr.ludovicbouguerra.ecodigo.language.UnexpectedResult;
 import fr.ludovicbouguerra.ecodigo.launcher.LanguageNotFoundException;
-import fr.ludovicbouguerra.ecodigo.model.CheckedTestCase;
+import fr.ludovicbouguerra.ecodigo.model.TestCases;
+import fr.ludovicbouguerra.ecodigo.model.UserEpreuve;
 import fr.ludovicbouguerra.ecodigo.model.UserResponse;
+import fr.ludovicbouguerra.ecodigo.services.ICompilationService;
 
 @ManagedBean
 @SessionScoped
 public class LauncherBeanSession {
 
+	
+	private UserEpreuve epreuve;
+	
+
+
+
 	private List<UserResponse> responses;
-	private List<List<CheckedTestCase>> checkedTestCases;
+
+
+	private List<TestCases> testCases;
+	
+	public List<TestCases> getTestCases() {
+		return testCases;
+	}
+
+	public void setTestCases(List<TestCases> testCases) {
+		this.testCases = testCases;
+	}
+
+	@EJB
+	private ICompilationService compilationService;
 	
 	
 	private int index;
@@ -30,10 +49,16 @@ public class LauncherBeanSession {
 	public LauncherBeanSession(){
 		index = 0;
 		responses = new ArrayList<UserResponse>();
-		checkedTestCases = new ArrayList<List<CheckedTestCase>>();
+		testCases = new ArrayList<TestCases>();
 	}
 	
-	
+	public String save(){
+		
+		
+		
+		return "";
+		
+	}
 	
 	public int getPage(){
 		return index+1;
@@ -90,27 +115,17 @@ public class LauncherBeanSession {
 		try {
 			if (responses.get(index).getLanguage().equals("java")) {
 
-				ArrayList<String> inputData = new ArrayList<String>();
-				ArrayList<String> expectedResult = new ArrayList<String>();
+				String inputData = testCases.get(index).getInput();
+				String expectedResult = testCases.get(index).getExpected();
 				
-				for (CheckedTestCase testCase : checkedTestCases.get(index)){
-					if (testCase.isChecked()){
-						inputData.add(testCase.getTestCase().getInput());
-						expectedResult.add(testCase.getTestCase().getExpected());
-					}
-				}
-				System.out.println(responses.get(index).getLanguage());
-				System.out.println(inputData.size());
-				System.out.println(expectedResult.size());
 				System.out.println("result");
 
-				ICompilationClient cc = new CompilationClient();
-				String result = cc.sendCompilation(getCode(), responses.get(index).getLanguage(),
+				String result = compilationService.sendCompilation(getCode(), responses.get(index).getLanguage(),
 						inputData, expectedResult);
 
 				
 				System.out.println("result");
-
+				
 				responses.get(index).setResponse(result);
 				responses.get(index).setValid(true);
 			} else {
@@ -130,14 +145,16 @@ public class LauncherBeanSession {
 
 
 
-	public List<List<CheckedTestCase>> getCheckedTestCases() {
-		return checkedTestCases;
+
+
+	
+	public UserEpreuve getEpreuve() {
+		return epreuve;
 	}
 
-
-
-	public void setCheckedTestCases(List<List<CheckedTestCase>> checkedTestCases) {
-		this.checkedTestCases = checkedTestCases;
+	public void setEpreuve(UserEpreuve epreuve) {
+		this.epreuve = epreuve;
 	}
-
+	
+	
 }

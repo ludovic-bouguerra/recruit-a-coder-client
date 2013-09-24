@@ -1,5 +1,7 @@
 package fr.ludovicbouguerra.ecodigo.services;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Local;
@@ -16,6 +18,7 @@ import fr.ludovicbouguerra.ecodigo.dao.IUserEpreuveDAO;
 import fr.ludovicbouguerra.ecodigo.model.Epreuve;
 import fr.ludovicbouguerra.ecodigo.model.User;
 import fr.ludovicbouguerra.ecodigo.model.UserEpreuve;
+import fr.ludovicbouguerra.ecodigo.model.UserEpreuveState;
 
 @Stateless
 @Local(value = IUserEpreuveService.class)
@@ -43,7 +46,31 @@ public class UserEpreuveService implements IUserEpreuveService {
 
 		userEpreuveDAO.saveOrUpdate(ue);
 		Transport.send(message);
+	}
+	
+	
+	@Override
+	public void initEpreuve(UserEpreuve ue) throws EpreuveAlreadyFinishedException{
+		if (ue.getState().equals(UserEpreuveState.FINISHED)){
+			throw new EpreuveAlreadyFinishedException();
+		}
+		else if (ue.getState().equals(UserEpreuveState.CREATED)){
+			ue.setDateBegin(new Date());
+			ue.setState(UserEpreuveState.STARTED);
+			userEpreuveDAO.saveOrUpdate(ue);
+		}
+		
 
+	}
+	
+	/**
+	 * Calling when the user validate his response
+	 */
+	@Override
+	public void send(UserEpreuve ue){
+		ue.setState(UserEpreuveState.FINISHED);
+		ue.setDateEnd(new Date());
+		userEpreuveDAO.saveOrUpdate(ue);
 	}
 
 }

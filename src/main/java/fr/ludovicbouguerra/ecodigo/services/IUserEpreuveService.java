@@ -4,6 +4,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import fr.ludovicbouguerra.ecodigo.model.Epreuve;
+import fr.ludovicbouguerra.ecodigo.model.UserEpreuve;
 
 public interface IUserEpreuveService {
 
@@ -15,4 +16,8 @@ public interface IUserEpreuveService {
 	 */
 	public void createEpreuveForUser(Epreuve epreuve, String email) throws AddressException, MessagingException;
 	
+	public void send(UserEpreuve ue);
+
+	void initEpreuve(UserEpreuve ue) throws EpreuveAlreadyFinishedException;
+
 }

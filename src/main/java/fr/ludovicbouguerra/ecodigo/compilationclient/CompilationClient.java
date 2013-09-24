@@ -2,12 +2,16 @@ package fr.ludovicbouguerra.ecodigo.compilationclient;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import com.sun.mail.iap.Response;
+import com.sun.xml.ws.policy.privateutil.PolicyUtils.Collections;
+
 import fr.ludovicbouguerra.ecodigo.language.UnexpectedResult;
 
 import javax.jms.*;
 import javax.naming.TimeLimitExceededException;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 /**
@@ -18,19 +22,18 @@ import java.util.Random;
  */
 public class CompilationClient implements ICompilationClient{
 
-	    private static int ackMode;
-	    private static String clientQueueName;
+	    private int ackMode;
+	    private String clientQueueName;
 	 
 	    private boolean transacted = false;
 	    private MessageProducer producer;
-	 
-	    static {
-	        clientQueueName = "client.messages";
-	        ackMode = Session.AUTO_ACKNOWLEDGE;
-	    }
-	 
-	    public CompilationClient() {
 
+	    private String server;
+	    
+	    public CompilationClient(String server, String clientQueueName) {
+	    	this.server = server;
+	    	this.clientQueueName = clientQueueName;
+	        ackMode = Session.AUTO_ACKNOWLEDGE;
 	    }
 	 
 	    private String createRandomString() {
@@ -42,8 +45,8 @@ public class CompilationClient implements ICompilationClient{
 
 		@Override
 		public String sendCompilation(String code, String language,
-				ArrayList<String> inputData, ArrayList<String> expectedResult) throws TimeLimitExceededException, UnexpectedResult {
-	        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+				String inputData, String expectedResult) throws TimeLimitExceededException, UnexpectedResult {
+	        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(server);
 	        Connection connection;
 	        try {
 	            connection = connectionFactory.createConnection();
@@ -68,8 +71,8 @@ public class CompilationClient implements ICompilationClient{
 	            //Now create the actual message you want to send
 	            Message message = session.createMessage();
 	            message.setStringProperty("code", code);
-	            message.setObjectProperty("input-data", inputData);
-	            message.setObjectProperty("expected-result", expectedResult);
+	            message.setStringProperty("input-data", inputData);
+	            message.setStringProperty("expected-result", expectedResult);
 	            message.setStringProperty("language", language);
 	            
 	 
@@ -85,15 +88,15 @@ public class CompilationClient implements ICompilationClient{
 	            String correlationId = this.createRandomString();
 	            message.setJMSCorrelationID(correlationId);
 	            this.producer.send(message);
-	            
+	            System.out.println("Awaiting response");
 	            Message response = responseConsumer.receive();
-	            
+	            System.out.println("Message reçu");
 	            if (response != null){
-	            	if (response.getStringProperty("response-type").equals("UnexpectedResult")){
+	            	if (response.propertyExists("response-type") && response.getStringProperty("response-type").equals("UnexpectedResult")){
 	            		throw new UnexpectedResult(response.getStringProperty("response"));
-	            	}
-	            	return  response.getStringProperty("response");
-	            	
+	            	}else{
+            			return response.getStringProperty("response");
+	            	}	            	
 	            }
 	            
 	            throw new TimeLimitExceededException();

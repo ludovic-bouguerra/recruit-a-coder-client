@@ -35,7 +35,7 @@ public class EpreuveBean {
 	}
 	
 	public String edit(int id){
-		return "pretty:manager_epreuve_new?id="+id;
+		return "new.xhtml?faces-redirect=true&id="+id;
 	}
 
 	public String remove(int id){

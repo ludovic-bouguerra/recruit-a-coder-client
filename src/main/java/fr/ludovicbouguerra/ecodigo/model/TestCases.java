@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -25,10 +26,13 @@ public class TestCases implements Serializable{
 	@JoinColumn(name="SUBJECT_ID", nullable=false)
 	private Subject subject;
 	
+	@Lob
 	private String description;
 	
+	@Lob
 	private String input;
 	
+	@Lob
 	private String expected;
 	
 	/**

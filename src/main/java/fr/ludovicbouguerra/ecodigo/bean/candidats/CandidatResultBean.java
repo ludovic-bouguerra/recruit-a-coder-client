@@ -38,6 +38,10 @@ public class CandidatResultBean {
 	public UserEpreuve getEpreuve() {
 		return epreuve;
 	}
+	
+	public String showResult(){
+		return "result.xhtml";
+	}
 
 	public void setEpreuve(UserEpreuve epreuve) {
 		this.epreuve = epreuve;
