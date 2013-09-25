@@ -21,9 +21,10 @@ public class UserEpreuveDAO implements IUserEpreuveDAO {
 	private EntityManager em;
 	
 	@Override
-	public void saveOrUpdate(UserEpreuve u) {
-		em.merge(u);	
+	public UserEpreuve saveOrUpdate(UserEpreuve u) {
+		UserEpreuve refreshedUe = em.merge(u);	
 		em.flush();
+		return refreshedUe;
 	}
 	
 	public List<UserEpreuve> findAll(){

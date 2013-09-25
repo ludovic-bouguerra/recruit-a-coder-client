@@ -1,7 +1,5 @@
 package fr.ludovicbouguerra.ecodigo.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.naming.TimeLimitExceededException;
 

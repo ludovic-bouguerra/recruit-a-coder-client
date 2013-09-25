@@ -1,11 +1,8 @@
 package fr.ludovicbouguerra.ecodigo.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.Init;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.naming.TimeLimitExceededException;

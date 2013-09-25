@@ -10,7 +10,7 @@ public interface IUserEpreuveDAO {
 	
 	public UserEpreuve createUserEpreuve(Epreuve epreuve, User user);
 	
-	public void saveOrUpdate(UserEpreuve u);
+	public UserEpreuve saveOrUpdate(UserEpreuve u);
 	
 	public List<UserEpreuve> findAll();
 

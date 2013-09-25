@@ -18,6 +18,9 @@ public interface IUserEpreuveService {
 	
 	public void send(UserEpreuve ue);
 
-	void initEpreuve(UserEpreuve ue) throws EpreuveAlreadyFinishedException;
+	UserEpreuve initEpreuve(int id) throws EpreuveAlreadyFinishedException, EpreuveNotFound;
 
+	public int getScoreForUserEpreuve(UserEpreuve ue);
+
+	
 }

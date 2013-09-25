@@ -28,7 +28,7 @@
 		Epreuve : <h:outputText value="#{candidatResultBean.epreuve.epreuve.title}" /> <br />
 		<br />
 		Résultat total : 
-			<p:progressBar value="50" labelTemplate="50%" displayOnly="true"/>  <br />
+			<p:progressBar value="#{candidatResultBean.epreuveScore}" labelTemplate="#{candidatResultBean.epreuveScore}%" displayOnly="true"/>  <br />
 		
 		
 		<ui:repeat var="userResponse" value="#{candidatResultBean.epreuve.userReponses}">

@@ -60,7 +60,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>administrateur</web-resource-name>
-			<url-pattern>/manager/</url-pattern>
+			<url-pattern>/manager/*</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 		</web-resource-collection>

@@ -22,7 +22,7 @@ public class UserResponseDAO implements IUserResponseDAO {
 	}
 	
 	public void saveOrUpdate(UserResponse u){
-		em.merge(u);
+		u = em.merge(u);
 		em.flush();
 	}
 	
